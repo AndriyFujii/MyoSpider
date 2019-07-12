@@ -25,12 +25,34 @@ public class MainActivity extends AppCompatActivity
     Button bBackward;
     Button bRotRight;
     Button bRotLeft;
+    Button bWave;
+    Button bWave2;
 
     EditText etIP;
     EditText etPort;
     EditText etTopic;
     EditText etUsername;
     EditText etPassword;
+
+    public void disableButtons()
+    {
+        bForward.setEnabled(false);
+        bBackward.setEnabled(false);
+        bRotRight.setEnabled(false);
+        bRotLeft.setEnabled(false);
+        bWave.setEnabled(false);
+        bWave2.setEnabled(false);
+    }
+
+    public void enableButtons()
+    {
+        bForward.setEnabled(true);
+        bBackward.setEnabled(true);
+        bRotRight.setEnabled(true);
+        bRotLeft.setEnabled(true);
+        bWave.setEnabled(true);
+        bWave2.setEnabled(true);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,18 +64,20 @@ public class MainActivity extends AppCompatActivity
         bBackward = findViewById(R.id.bBackward);
         bRotRight = findViewById(R.id.bRotRight);
         bRotLeft = findViewById(R.id.bRotLeft);
+        bWave = findViewById(R.id.bWave);
+        bWave2 = findViewById(R.id.bWave2);
         etIP = findViewById(R.id.etIP);
         etPort = findViewById(R.id.etPort);
         etTopic = findViewById(R.id.etTopic);
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
 
-        bForward.setEnabled(false);
-        bBackward.setEnabled(false);
-        bRotRight.setEnabled(false);
-        bRotLeft.setEnabled(false);
+        disableButtons();
     }
 
+    //Verifica se algum campo está vazio e coloca um erro se estiver
+    //Recebe o EditText a ser verificado
+    //Retorna true caso esteja vazio, e false caso não
     public boolean isEmpty(EditText et)
     {
         String validation = et.getText().toString();
@@ -107,10 +131,7 @@ public class MainActivity extends AppCompatActivity
                     {
                         //Conectou
                         Toast.makeText(MainActivity.this, "Successfully connected", Toast.LENGTH_LONG).show();
-                        bForward.setEnabled(true);
-                        bBackward.setEnabled(true);
-                        bRotRight.setEnabled(true);
-                        bRotLeft.setEnabled(true);
+                        enableButtons();
                     }
 
                     @Override
@@ -118,10 +139,7 @@ public class MainActivity extends AppCompatActivity
                     {
                         //Não conectou
                         Toast.makeText(MainActivity.this, "Connection wasn't successful", Toast.LENGTH_LONG).show();
-                        bForward.setEnabled(false);
-                        bBackward.setEnabled(false);
-                        bRotRight.setEnabled(false);
-                        bRotLeft.setEnabled(false);
+                        enableButtons();
                     }
                 });
             } catch (MqttException e)
@@ -133,10 +151,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickClear(View v)
     {
-        bForward.setEnabled(false);
-        bBackward.setEnabled(false);
-        bRotRight.setEnabled(false);
-        bRotLeft.setEnabled(false);
+        disableButtons();
 
         etIP.setText("");
         etPort.setText("");
@@ -145,10 +160,10 @@ public class MainActivity extends AppCompatActivity
         etPassword.setText("");
     }
 
-    public void onClickForward(View v)
+    //Publica uma mensagem
+    //Têm como parâmetro o tópico onde deve ser publicada a mensagem e a mensagem em si
+    public void publishMessage(String topic, String message)
     {
-        String topic = SUBSCRIPTION;
-        String message = "1500000000000000";
         try
         {
             client.publish(topic, message.getBytes(), 0, false);
@@ -157,47 +172,35 @@ public class MainActivity extends AppCompatActivity
         {
             e.printStackTrace();
         }
+    }
+
+    public void onClickForward(View v)
+    {
+        publishMessage(SUBSCRIPTION,"1500000000000000");
     }
 
     public void onClickBackward(View v)
     {
-        String topic = SUBSCRIPTION;
-        String message = "0000150000000000";
-        try
-        {
-            client.publish(topic, message.getBytes(), 0, false);
-        }
-        catch(MqttException e)
-        {
-            e.printStackTrace();
-        }
+        publishMessage(SUBSCRIPTION,"0000150000000000");
     }
 
     public void onClickRotRight(View v)
     {
-        String topic = SUBSCRIPTION;
-        String message = "0000000015000000";
-        try
-        {
-            client.publish(topic, message.getBytes(), 0, false);
-        }
-        catch(MqttException e)
-        {
-            e.printStackTrace();
-        }
+        publishMessage(SUBSCRIPTION,"0000000015000000");
     }
 
     public void onClickRotLeft(View v)
     {
-        String topic = SUBSCRIPTION;
-        String message = "0000000000001500";
-        try
-        {
-            client.publish(topic, message.getBytes(), 0, false);
-        }
-        catch(MqttException e)
-        {
-            e.printStackTrace();
-        }
+        publishMessage(SUBSCRIPTION,"0000000000001500");
+    }
+
+    public void onClickWave(View v)
+    {
+        publishMessage(SUBSCRIPTION,"Wave1");
+    }
+
+    public void onClickWave2(View v)
+    {
+        publishMessage(SUBSCRIPTION,"Wave2");
     }
 }
