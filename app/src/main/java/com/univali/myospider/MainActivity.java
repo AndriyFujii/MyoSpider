@@ -2,6 +2,7 @@ package com.univali.myospider;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -172,6 +173,12 @@ public class MainActivity extends AppCompatActivity
         {
             e.printStackTrace();
         }
+    }
+
+    public void onClickGyroscope(View v)
+    {
+        Intent intentOpenGyroscopeAtivity = new Intent(this.getApplicationContext(), GyroscopeActivity.class);
+        this.startActivity(intentOpenGyroscopeAtivity);
     }
 
     public void onClickForward(View v)

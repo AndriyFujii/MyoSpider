@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".GyroscopeActivity">
+
 
     <ScrollView
-        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="-150dp">
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/etIP"
+                android:id="@+id/etIP2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/etPort"
+                android:id="@+id/etPort2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -52,11 +52,12 @@
                 android:text="1883"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etIP" />
+                app:layout_constraintTop_toBottomOf="@+id/etIP2" />
 
             <EditText
-                android:id="@+id/etTopic"
+                android:id="@+id/etTopic2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -64,17 +65,19 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:digits="0123456789"
                 android:ems="10"
                 android:hint="Topic"
                 android:inputType="text"
                 android:text="test_channel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etPort" />
+                app:layout_constraintTop_toBottomOf="@+id/etPort2" />
 
             <EditText
-                android:id="@+id/etUsername"
+                android:id="@+id/etUsername2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -82,17 +85,19 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:digits="0123456789"
                 android:ems="10"
                 android:hint="Username"
                 android:inputType="text"
                 android:text="biosinal"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etTopic" />
+                app:layout_constraintTop_toBottomOf="@+id/etTopic2" />
 
             <EditText
-                android:id="@+id/etPassword"
+                android:id="@+id/etPassword2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -100,29 +105,19 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:digits="0123456789"
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="text"
                 android:text="notapass"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+                app:layout_constraintTop_toBottomOf="@+id/etUsername2" />
 
             <Button
-                android:id="@+id/bConnect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:onClick="onClickConnect"
-                android:text="CONNECT"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etPassword" />
-
-            <Button
-                android:id="@+id/bClear"
+                android:id="@+id/bClear2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -131,85 +126,7 @@
                 android:onClick="onClickClear"
                 android:text="CLEAR"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etPassword" />
-
-            <Button
-                android:id="@+id/bForward"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:onClick="onClickForward"
-                android:text="FORWARD"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bManual" />
-
-            <Button
-                android:id="@+id/bBackward"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:onClick="onClickBackward"
-                android:text="BACKWARD"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bRotRight" />
-
-            <Button
-                android:id="@+id/bRotRight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:onClick="onClickRotRight"
-                android:text="ROTATE RIGHT"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bForward" />
-
-            <Button
-                android:id="@+id/bRotLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="8dp"
-                android:onClick="onClickRotLeft"
-                android:text="ROTATE LEFT"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bForward" />
-
-            <Button
-                android:id="@+id/bWave2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:onClick="onClickWave2"
-                android:text="WAVE2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bRotRight" />
-
-            <Button
-                android:id="@+id/bWave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="32dp"
-                android:onClick="onClickWave"
-                android:text="WAVE"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bRotLeft" />
+                app:layout_constraintTop_toBottomOf="@+id/etPassword2" />
 
             <Button
                 android:id="@+id/bManual"
@@ -220,11 +137,47 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:onClick="onClickGyroscope"
-                android:text="GYROSCOPE"
-                app:layout_constraintEnd_toStartOf="@+id/bConnect"
-                app:layout_constraintStart_toEndOf="@+id/bClear"
-                app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+                android:onClick="onClickManual"
+                android:text="MANUAL"
+                app:layout_constraintEnd_toStartOf="@+id/bConnect2"
+                app:layout_constraintStart_toEndOf="@+id/bClear2"
+                app:layout_constraintTop_toBottomOf="@+id/etPassword2" />
+
+            <Button
+                android:id="@+id/bStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:onClick="onClickStart"
+                android:text="START"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bConnect2" />
+
+            <Button
+                android:id="@+id/bStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="64dp"
+                android:onClick="onClickStop"
+                android:text="STOP"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bClear2" />
+
+            <Button
+                android:id="@+id/bConnect2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:onClick="onClickConnect"
+                android:text="CONNECT"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPassword2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
